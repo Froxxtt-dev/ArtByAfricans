@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ArtByAfricans • African Craft Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-shell bg-gray-50 text-gray-800 min-h-[100dvh] flex flex-col">
+    <nav class="app-nav sticky top-0 z-50 shrink-0 bg-white/95 backdrop-blur border-b border-gray-200/80">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#9C6644] rounded-xl sm:rounded-2xl flex items-center justify-center text-white text-lg sm:text-xl shrink-0">🪔</div>
+                <h1 class="heading-font text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-[#9C6644] truncate">ArtByAfricans</h1>
+            </div>
+
+            <div class="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
+                <button type="button" onclick="showSection('home')" class="nav-link py-1">Home</button>
+                <button type="button" onclick="showSection('shop')" class="nav-link py-1">Shop</button>
+                <button type="button" onclick="showSection('categories')" class="nav-link py-1">Categories</button>
+                <button type="button" onclick="showSection('artisans')" class="nav-link py-1">Artisans</button>
+                <button type="button" onclick="showSection('sell')" class="nav-link py-1">Sell</button>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <button type="button" onclick="toggleCart()" class="relative p-2 rounded-xl hover:bg-gray-100 text-gray-800" aria-label="Open cart">
+                    <i class="fa-solid fa-bag-shopping text-xl sm:text-2xl"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-[#9C6644] text-white text-[10px] sm:text-xs rounded-full min-w-[1.125rem] h-[1.125rem] sm:w-5 sm:h-5 flex items-center justify-center px-0.5">0</span>
+                </button>
+                <a href="checkout.html" class="bg-[#9C6644] text-white px-3 py-2 sm:px-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-medium hover:bg-[#8A5A3E] whitespace-nowrap">
+                    Checkout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="app-main flex-1 flex flex-col w-full min-h-0">
+        <section id="home-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 flex-1 flex flex-col">
+            <div class="hero-bg rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-14 lg:p-16 text-white">
+                <p class="uppercase tracking-[0.18em] text-[10px] sm:text-xs mb-2 sm:mb-3">Curated African craftsmanship</p>
+                <h2 class="heading-font text-2xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl leading-tight mb-3 sm:mb-4">Authentic artworks, beadwork, textiles and home decor.</h2>
+                <p class="max-w-2xl text-sm sm:text-base text-white/90 mb-6 sm:mb-8">Explore handmade pieces from African artisans and customize your order with your own specifications.</p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                    <button type="button" onclick="showSection('shop')" class="bg-[#9C6644] hover:bg-[#8A5A3E] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold w-full sm:w-auto">Start shopping</button>
+                    <button type="button" onclick="goCustomerCare()" class="bg-white/15 hover:bg-white/25 border border-white/40 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-semibold w-full sm:w-auto">Customer care</button>
+                </div>
+                <p class="mt-4 text-[11px] sm:text-xs text-white/75 max-w-xl">Hero: Benin Kingdom brass plaque (British Museum collections, Commons — Michel wal, CC BY-SA).</p>
+            </div>
+
+            <section id="customer-care" class="scroll-mt-24 bg-gradient-to-br from-[#2c2419] to-[#1a1612] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-gray-100 border border-[#9C6644]/20 shadow-lg" aria-labelledby="care-heading">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                    <div>
+                        <h3 id="care-heading" class="heading-font text-xl sm:text-2xl text-white mb-1">Customer service — we’re here first</h3>
+                        <p class="text-sm text-white/80 max-w-xl">For Orders, customs, delivery outside Ghana, or artisan custom work reach us by phone, email, or chat hours below.</p>
+                    </div>
+                    <a href="tel:+233240000000" class="shrink-0 inline-flex items-center justify-center gap-2 bg-[#9C6644] hover:bg-[#8A5A3E] text-white px-5 py-3 rounded-xl font-semibold text-sm sm:text-base w-full sm:w-auto">
+                        <i class="fa-solid fa-phone"></i> Call now
+                    </a>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                    <a href="mailto:support@artisanaf.africa" class="flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#c4a574]/50 transition">
+                        <span class="text-[#c4a574] text-xl"><i class="fa-solid fa-envelope"></i></span>
+                        <div>
+                            <p class="text-xs uppercase tracking-wide text-white/60">Email</p>
+                            <p class="font-medium text-white text-sm break-all">support@artisanaf.africa</p>
+                            <p class="text-xs text-white/55 mt-1">Reply within 24–48 hrs</p>
+                        </div>
+                    </a>
+                    <div class="flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
+                        <span class="text-[#c4a574] text-xl"><i class="fa-solid fa-clock"></i></span>
+                        <div>
+                            <p class="text-xs uppercase tracking-wide text-white/60">Hours (GMT)</p>
+                            <p class="font-medium text-white text-sm">Mon–Sat 8:00–20:00</p>
+                            <p class="text-xs text-white/55 mt-1">Sun emergency line only</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/233240000000" target="_blank" rel="noopener noreferrer" class="flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#c4a574]/50 transition">
+                        <span class="text-[#c4a574] text-xl"><i class="fa-brands fa-whatsapp"></i></span>
+                        <div>
+                            <p class="text-xs uppercase tracking-wide text-white/60">WhatsApp</p>
+                            <p class="font-medium text-white text-sm">+233 54 175 6722</p>
+                            <p class="text-xs text-white/55 mt-1">Fast answers for tracking</p>
+                        </div>
+                    </a>
+                    <button type="button" onclick="showSection('shop')" class="text-left flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#c4a574]/50 transition w-full">
+                        <span class="text-[#c4a574] text-xl"><i class="fa-solid fa-truck-fast"></i></span>
+                        <div>
+                            <p class="text-xs uppercase tracking-wide text-white/60">Intl. delivery</p>
+                            <p class="font-medium text-white text-sm">We ship worldwide</p>
+                            <p class="text-xs text-white/55 mt-1">See checkout for zones</p>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 flex-1">
+                <article class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Nok_terracotta_figurine.jpg" alt="Nok culture terracotta (Nigeria)" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4 sm:p-6">
+                    <h3 class="heading-font text-xl sm:text-2xl mb-3 sm:mb-4">Known African Artworks</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-700 leading-snug">
+                        <li><strong>Nok Terracotta Heads</strong> — Nigeria</li>
+                        <li><strong>Benin Bronze Plaques</strong> — Benin</li>
+                        <li><strong>Kente Weaving</strong> — Ghana</li>
+                        <li><strong>Maasai Beadwork</strong> — Kenya/Tanzania</li>
+                        <li><strong>Ndebele Wall Art</strong> — South Africa</li>
+                        <li><strong>Bogolanfini (Mud Cloth)</strong> — Mali</li>
+                    </ul>
+                    <p class="mt-3 text-[10px] text-gray-500">Photo: Nok figurine (Commons, CC BY-SA).</p>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Ewe_kente_stripes%2C_Ghana.jpg" alt="Ewe kente stripes from Ghana" class="w-full h-40 sm:h-48 object-cover" loading="lazy">
+                    <div class="p-4 sm:p-6">
+                    <h3 class="heading-font text-xl sm:text-2xl mb-3 sm:mb-4">Materials and Craft Methods</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-700 leading-snug">
+                        <li><strong>Clay and Terracotta:</strong> hand-molded, kiln-fired ceramics and ritual forms.</li>
+                        <li><strong>Brass and Bronze:</strong> lost-wax casting for masks and plaques.</li>
+                        <li><strong>Wood (Ebony/Iroko):</strong> carved masks, stools, and symbolic figures.</li>
+                        <li><strong>Glass Beads:</strong> Krobo and Maasai beadwork.</li>
+                        <li><strong>Cotton, Raffia, Wool:</strong> kente, baskets, textiles.</li>
+                        <li><strong>Natural Dyes:</strong> indigo, mud, and bark patterns.</li>
+                    </ul>
+                    <p class="mt-3 text-[10px] text-gray-500">Photo: Ewe kente stripes, ZSM / Commons (CC BY-SA).</p>
+                    </div>
+                </article>
+            </div>
+
+            <article class="bg-[#F5EEE9] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
+                <h3 class="heading-font text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">Why These Artifacts Matter</h3>
+                <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    African artworks carry stories of identity, spirituality, lineage, trade, and celebration. ArtByAfricans highlights origin, craft style, and artisan details so buyers understand the cultural context behind every piece.
+                </p>
+            </article>
+
+            <section class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-gray-100 shadow-sm" aria-labelledby="team-heading">
+                <h3 id="team-heading" class="heading-font text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3"> Project team (11)</h3>
+                <p class="text-sm text-gray-600 mb-4 max-w-2xl">ArtByAfricans — collaborative academic project.</p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-sm text-gray-800">
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Sarfo Bright <span class="text-gray-500 text-xs"> 10296662</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Quarcoo Bright Nii Ayi <span class="text-gray-500 text-xs"> 10297720</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Apedu Abdul Salim Ahmed <span class="text-gray-500 text-xs"> 10297622</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Owusu Alex Achia <span class="text-gray-500 text-xs"> 10299259</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Asiedu Abigail Esi Faa <span class="text-gray-500 text-xs"> 10300232</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Poku Catherine Opokuaa <span class="text-gray-500 text-xs"> 10299187</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Boateng Awurakua <span class="text-gray-500 text-xs"> 10300254</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Sumaila Aisha <span class="text-gray-500 text-xs"> 10299117</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Benyah Nelson N. A. Bethel <span class="text-gray-500 text-xs"> 10300585</span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Okudzeto Benedict <span class="text-gray-500 text-xs"> 10300254 </span></li>
+                    <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#9C6644] shrink-0" aria-hidden="true"></span> Darko Sintim Bridget <span class="text-gray-500 text-xs"> 10113796 </span></li>
+                </ul>
+            </section>
+        </section>
+
+<!-- CATEGORIES SECTION - Updated with direct image links -->
+        <section id="categories-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
+            <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Categories</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 flex-1 content-start">
+                
+                <!-- 01 Beadwork -->
+                <button type="button" onclick="filterCategory('beadwork')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWDQvRDS5EL5Jiv3FadPO5IzDuPqKyF5Smfg&s'); background-position: center;">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">01</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Beadwork</p>
+                </button>
+
+                <!-- 02 Pottery -->
+                <button type="button" onclick="filterCategory('pottery')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://www.veniceclayartists.com/wp-content/uploads/2017/02/selection-of-vintage-pottery-from-a-variety-of-tribes-in-Burkina-Faso-in-Ouagadougou.jpg'); background-position: center 30%;">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">02</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Pottery</p>
+                </button>
+
+                <!-- 03 Textiles -->
+                <button type="button" onclick="filterCategory('textile')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://5857532.fs1.hubspotusercontent-na1.net/hubfs/5857532/african%20textiles.jpg');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">03</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Textiles</p>
+                </button>
+
+                <!-- 04 Home Decor -->
+                <button type="button" onclick="filterCategory('decor')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://paintedcreativity.com/wp-content/uploads/2024/01/African-Home-Decor.jpg');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">04</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Home decor</p>
+                </button>
+
+                <!-- 05 Jewelry -->
+                <button type="button" onclick="filterCategory('jewelry')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://karoobling.co.za/cdn/shop/articles/IMG20240723161934.jpg?v=1723962202&width=1100');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">05</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Jewelry</p>
+                </button>
+
+                <!-- 06 Basketry -->
+                <button type="button" onclick="filterCategory('basketry')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://cdn.shopify.com/s/files/1/1065/2228/files/history-of-african-woven-baskets-2.jpg?v=1711111053');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">06</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Basketry</p>
+                </button>
+
+                <!-- 07 Sculpture -->
+                <button type="button" onclick="filterCategory('sculpture')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://static01.nyt.com/images/2011/09/23/arts/AFRICA1_span/JPAFRICA1-articleLarge.jpg?quality=75&auto=webp&disable=upscale');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">07</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Sculpture</p>
+                </button>
+
+                <!-- 08 Leather -->
+                <button type="button" onclick="filterCategory('leather')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end"
+                        style="background-image: url('https://cdn.shopify.com/s/files/1/0470/9852/7904/files/image2_5a65b022-0d75-4478-a97b-24a130cc301b_600x600.png?v=1684756650');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">08</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Leather</p>
+                </button>
+
+                <!-- 09 Instruments -->
+                <button type="button" onclick="filterCategory('instruments')" 
+                        class="cat-tile border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left text-white hover:opacity-95 active:scale-[0.98] transition shadow-md min-h-[120px] sm:min-h-[140px] flex flex-col justify-end col-span-2 sm:col-span-1"
+                        style="background-image: url('https://miro.medium.com/1*x_YCdfWN6q2uFTY2nq6c5Q.png');">
+                    <p class="text-[10px] sm:text-xs opacity-90 mb-0.5">09</p>
+                    <p class="text-base sm:text-lg font-semibold drop-shadow-sm">Instruments</p>
+                </button>
+            </div>
+        </section>
+
+        <section id="shop-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
+           </div>
+            <div class="flex flex-col gap-4 mb-6 sm:mb-8">
+                <h2 class="heading-font mobile-shop-title text-2xl sm:text-3xl md:text-4xl font-bold">Shop African Artworks</h2>
+                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <input id="search-input" onkeyup="searchProducts()" type="search" enterkeyhint="search" placeholder="Search pottery, beads, kente..." class="flex-1 min-w-0 px-4 py-3 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#9C6644]/30 focus:border-[#9C6644] text-base">
+                    <button type="button" onclick="searchProducts()" class="bg-[#9C6644] text-white px-5 sm:px-6 py-3 rounded-xl sm:rounded-2xl shrink-0" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="products-grid" class="products-grid-mobile grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8"></div>
+        </section>
+
+        <section id="artisans-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
+            <div id="artisans-directory" class="flex-1 flex flex-col">
+                <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Artisans</h2>
+
+                <div class="mb-8 sm:mb-10 bg-white border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-sm">
+                    <h3 class="font-semibold text-lg mb-1">Design studio</h3>
+                    <p class="text-sm text-gray-600 mb-4">Draw on the canvas below. Submitted designs can be listed for auction and appear in the artisan’s portfolio.</p>
+                    <div class="rounded-xl border-2 border-dashed border-gray-200 bg-white overflow-hidden touch-pan-y">
+                        <canvas id="design-canvas" class="design-canvas block w-full max-h-[min(45vh,280px)]" aria-label="Drawing canvas"></canvas>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-3">
+                        <label class="flex items-center gap-2 text-sm">
+                            <span class="text-gray-600">Ink</span>
+                            <input type="color" id="sketch-color" value="#1a1a1a" class="h-9 w-12 rounded border cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-2 text-sm">
+                            <span class="text-gray-600">Size</span>
+                            <input type="range" id="sketch-brush" min="1" max="12" value="3" class="w-24 sm:w-32">
+                        </label>
+                        <button type="button" onclick="clearDesignCanvas()" class="px-3 py-2 rounded-xl border text-sm font-medium hover:bg-gray-50">Clear</button>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3 mt-4">
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 mb-1">Artisan name (as in directory)</label>
+                            <input type="text" id="sketch-artisan" placeholder="e.g. Sarfo Kantanka " class="w-full border rounded-xl px-3 py-2 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 mb-1">Design title</label>
+                            <input type="text" id="sketch-title" placeholder="My pattern study" class="w-full border rounded-xl px-3 py-2 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 mb-1">Starting bid (GH¢)</label>
+                            <input type="number" id="sketch-bid" min="1" value="50" class="w-full border rounded-xl px-3 py-2 text-base">
+                        </div>
+                    </div>
+                    <input type="hidden" id="editing-auction-id" value="">
+                    <div class="flex flex-col sm:flex-row gap-2 mt-4">
+                        <button type="button" id="sketch-submit-btn" onclick="submitSketchAuction()" class="flex-1 bg-[#9C6644] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#8A5A3E]">
+                            Submit for auction
+                        </button>
+                        <button type="button" id="sketch-cancel-edit-btn" onclick="cancelAuctionEdit()" class="hidden flex-1 border border-gray-300 px-6 py-3 rounded-xl font-medium hover:bg-gray-50">
+                            Cancel edit
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2"> Note: tap <strong>Edit</strong> on your listing to change title, price, or sketch, then save. <strong>Delete</strong> requires your artisan name.</p>
+                </div>
+
+                <div id="auction-block" class="mb-8 sm:mb-10">
+                    <h3 class="font-semibold text-base sm:text-lg mb-3">Sketch auctions</h3>
+                    <div id="auction-list" class="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory scrollbar-thin"></div>
+                </div>
+
+                <h3 class="font-semibold text-base sm:text-lg mb-3">Directory</h3>
+                <div id="artisans-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6"></div>
+            </div>
+
+            <div id="artisan-profile-view" class="hidden flex-1 flex flex-col">
+                <button type="button" onclick="closeArtisanProfile()" class="mb-4 inline-flex items-center gap-2 text-sm font-medium text-[#9C6644] hover:underline">
+                    <i class="fa-solid fa-arrow-left"></i> Back to artisans
+                </button>
+                <div class="flex items-start gap-3 sm:gap-4 mb-2">
+                    <img id="artisan-profile-avatar" src="" alt="" width="56" height="56" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-[#9C6644]/35 shrink-0 bg-gray-100">
+                    <div class="min-w-0">
+                        <h2 id="artisan-profile-title" class="heading-font text-xl sm:text-3xl font-bold leading-tight"></h2>
+                        <p id="artisan-profile-meta" class="text-sm text-gray-600 mt-1"></p>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mb-6 sm:mb-6">Swipe item photos sideways for more angles.</p>
+                <h3 class="font-semibold mb-3">Works &amp; listings</h3>
+                <div id="artisan-works-grid" class="products-grid-mobile grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"></div>
+            </div>
+        </section>
+
+        <section id="sell-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
+            <div class="max-w-3xl w-full mx-auto bg-white border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-sm flex-1 flex flex-col">
+                <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl mb-2">Post your work for sale</h2>
+                <p class="text-sm sm:text-base text-gray-600 mb-6">Upload a photo and details. Your listing appears in the shop.</p>
+                <form id="upload-form" onsubmit="submitUpload(event)" class="space-y-4 flex-1">
+                    <div>
+                        <label class="block text-sm mb-1">Craft title</label>
+                        <input id="upload-title" type="text" required class="w-full border rounded-xl px-3 py-2.5 text-base">
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm mb-1">Price (GH¢)</label>
+                            <input id="upload-price" type="number" min="1" required class="w-full border rounded-xl px-3 py-2.5 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-1">Category</label>
+                            <select id="upload-category" class="w-full border rounded-xl px-3 py-2.5 text-base">
+                                <option value="beadwork">Beadwork</option>
+                                <option value="pottery">Pottery</option>
+                                <option value="textile">Textile</option>
+                                <option value="decor">Decor</option>
+                                <option value="jewelry">Jewelry</option>
+                                <option value="basketry">Basketry</option>
+                                <option value="sculpture">Sculpture</option>
+                                <option value="leather">Leather</option>
+                                <option value="instruments">Instruments</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1">Artisan name</label>
+                        <input id="upload-artisan" type="text" required class="w-full border rounded-xl px-3 py-2.5 text-base">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1">Craft description</label>
+                        <textarea id="upload-desc" rows="3" required class="w-full border rounded-xl p-3 text-base"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1">Photos (swipe gallery) up to 5</label>
+                        <input id="upload-images" type="file" accept="image/*" multiple class="w-full border rounded-xl px-3 py-2.5 bg-white text-sm">
+                        <p class="text-xs text-gray-500 mt-1">Select multiple for more angles. First photo is the cover.</p>
+                    </div>
+                    <button type="submit" class="w-full sm:w-auto bg-[#9C6644] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#8A5A3E]">
+                        Publish listing
+                    </button>
+                </form>
+            </div>
+        </section>
+
+<footer class="site-footer mt-auto shrink-0 bg-[#1f1a16] text-gray-400 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 py-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+                    
+                    <!-- Brand -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-[#9C6644] rounded-2xl flex items-center justify-center text-white text-xl">🪔</div>
+                        <div>
+                            <span class="heading-font font-semibold text-white">ArtByAfricans</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+                        <button onclick="showSection('shop')" class="hover:text-white transition">Shop</button>
+                        <button onclick="showSection('categories')" class="hover:text-white transition">Categories</button>
+                        <button onclick="showSection('artisans')" class="hover:text-white transition">Artisans</button>
+                        <button onclick="goCustomerCare()" class="hover:text-white transition">Support</button>
+                    </div>
+
+                    <!-- Social + Made by Frost -->
+                    <div class="flex items-center gap-6">
+                        <div class="flex gap-4 text-lg">
+                            <a href="https://www.instagram.com/reel/DP9BWfyjB1f/?igsh=MWU3a2dnOGQ4MXJ6Zw==" class="hover:text-[#9C6644] transition"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/233541756722" target="_blank" class="hover:text-[#9C6644] transition"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://x.com/i/status/2040957497922465841" class="hover:text-[#9C6644] transition"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                        <p class="text-[#c4a574] font-medium text-sm">Made by Frost</p>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center text-xs text-gray-500 mt-8 pt-6 border-t border-gray-800">
+                    © 2026 ArtByAfricans. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <aside id="cart-sidebar" class="cart-sidebar fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[60] p-4 sm:p-6 border-l border-gray-100 flex flex-col">
+        <div class="flex justify-between items-center mb-4 shrink-0">
+            <h3 class="heading-font text-2xl sm:text-3xl">Your cart</h3>
+            <button type="button" onclick="toggleCart()" class="p-2 rounded-xl hover:bg-gray-100 text-xl" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="cart-items" class="space-y-4 flex-1 overflow-y-auto min-h-0 overscroll-contain"></div>
+        <div class="border-t pt-4 shrink-0 pb-[env(safe-area-inset-bottom,0px)]">
+            <div class="flex justify-between text-base sm:text-lg font-semibold mb-4">
+                <span>Total</span>
+                <span id="cart-total">GHS 0</span>
+            </div>
+            <a href="checkout.html" class="block text-center bg-[#9C6644] text-white py-3.5 sm:py-4 rounded-xl font-medium hover:bg-[#8A5A3E]">Go to checkout</a>
+        </div>
+    </aside>
+
+    <div id="product-modal" class="hidden fixed inset-0 bg-black/70 z-[70] items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain">
+        <div class="bg-white rounded-2xl sm:rounded-3xl max-w-6xl w-full max-h-[min(94dvh,900px)] overflow-y-auto my-auto shadow-2xl">
+            <div class="p-4 sm:p-6 border-b flex justify-between items-start gap-3 sticky top-0 bg-white z-10">
+                <h3 id="modal-title" class="heading-font text-xl sm:text-3xl pr-2 leading-snug"></h3>
+                <button type="button" onclick="closeModal()" class="shrink-0 p-2 rounded-xl hover:bg-gray-100 text-xl" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-4 sm:gap-8 p-4 sm:p-6">
+                <div id="modal-image-wrap" class="rounded-2xl overflow-hidden min-h-[200px] h-[38vh] sm:h-[420px] bg-gray-100 relative"></div>
+                <div>
+                    <p id="modal-artisan" class="text-sm text-[#9C6644] mb-2"></p>
+                    <p id="modal-price" class="text-2xl sm:text-3xl font-bold mb-4"></p>
+                    <p id="modal-desc" class="text-gray-700 text-sm sm:text-base mb-3"></p>
+                    <p id="modal-photo-credit" class="hidden text-xs text-gray-500 mb-6 border-l-2 border-[#9C6644]/40 pl-3 py-1"></p>
+
+                    <div class="bg-gray-50 border rounded-2xl p-4 sm:p-5 mb-6">
+                        <h4 class="font-semibold mb-4">Custom specifications</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-1">Color preference</label>
+                                <select id="spec-color" class="w-full border rounded-xl px-3 py-2.5 text-base">
+                                    <option>Ash Brown</option>
+                                    <option>Honey Gold</option>
+                                    <option>Royal Blue</option>
+                                    <option>Forest Green</option>
+                                    <option>Custom Mix</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-1">Number of item</label>
+                                <input id="spec-beads" type="number" min="10" step="10" value="50" class="w-full border rounded-xl px-3 py-2.5 text-base">
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-1">Name on item (optional)</label>
+                                <input id="spec-name" type="text" placeholder="e.g. Badu, James" class="w-full border rounded-xl px-3 py-2.5 text-base">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="addCurrentToCart()" class="w-full bg-[#9C6644] text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-semibold hover:bg-[#8A5A3E] text-sm sm:text-base">
+                        Add to cart • <span id="modal-price-btn"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-6 border-t grid lg:grid-cols-2 gap-6 sm:gap-8">
+                <div>
+                    <h4 class="text-lg sm:text-xl font-semibold mb-4">Reviews</h4>
+                    <div id="reviews-container" class="space-y-4"></div>
+                    <form onsubmit="submitReview(event)" class="mt-4">
+                        <textarea id="review-input" required rows="3" class="w-full border rounded-xl p-3 text-base" placeholder="Write a review..."></textarea>
+                        <button type="submit" class="mt-3 bg-gray-900 text-white px-4 py-2 rounded-xl text-sm font-medium">Post review</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h4 class="text-lg sm:text-xl font-semibold mb-4">Chat with artisan</h4>
+                    <div id="chatbox-messages" class="border rounded-2xl p-3 sm:p-4 h-48 sm:h-56 overflow-y-auto bg-gray-50 space-y-3 text-sm"></div>
+                    <form onsubmit="sendChatMessage(event)" class="mt-3 flex gap-2">
+                        <input id="chatbox-input" type="text" required placeholder="Ask about delivery, size..." class="flex-1 min-w-0 border rounded-xl px-3 py-2.5 text-base">
+                        <button type="submit" class="bg-[#9C6644] text-white px-4 rounded-xl shrink-0">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mobile-tabbar md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-gray-200/90 pb-[env(safe-area-inset-bottom,0px)]" aria-label="Primary">
+        <div class="grid grid-cols-5 h-14 text-[10px] sm:text-xs font-medium text-gray-700">
+            <button type="button" onclick="showSection('home')" class="flex flex-col items-center justify-center gap-0.5 px-1 active:bg-gray-50 min-h-[3.5rem]">
+                <i class="fa-solid fa-house text-base text-[#9C6644]"></i><span>Home</span>
+            </button>
+            <button type="button" onclick="showSection('shop')" class="flex flex-col items-center justify-center gap-0.5 px-1 active:bg-gray-50 min-h-[3.5rem]">
+                <i class="fa-solid fa-store text-base"></i><span>Shop</span>
+            </button>
+            <button type="button" onclick="showSection('categories')" class="flex flex-col items-center justify-center gap-0.5 px-1 active:bg-gray-50 min-h-[3.5rem]">
+                <i class="fa-solid fa-layer-group text-base"></i><span>Categories</span>
+            </button>
+            <button type="button" onclick="showSection('artisans')" class="flex flex-col items-center justify-center gap-0.5 px-1 active:bg-gray-50 min-h-[3.5rem]">
+                <i class="fa-solid fa-palette text-base"></i><span>Artisans</span>
+            </button>
+            <button type="button" onclick="showSection('sell')" class="flex flex-col items-center justify-center gap-0.5 px-1 active:bg-gray-50 min-h-[3.5rem]">
+                <i class="fa-solid fa-upload text-base"></i><span>Sell</span>
+            </button>
+        </div>
+    </nav>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary: #9C6644;
+    --app-tabbar-h: 3.5rem;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+}
+
+.app-shell {
+    min-height: 100dvh;
+    min-height: 100vh;
+}
+
+.app-main {
+    /* Space for fixed mobile tab bar (+ support strip on small screens) */
+    padding-bottom: calc(var(--app-tabbar-h) + var(--safe-bottom) + 0.25rem);
+}
+
+@media (max-width: 767px) {
+    .app-main {
+        --app-tabbar-h: 5.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .app-main {
+        padding-bottom: 1.5rem;
+    }
+}
+
+.heading-font {
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.45)),
+        url('https://upload.wikimedia.org/wikipedia/commons/7/73/Benin_brass_plaque_03_%28cropped%29.jpg');
+    background-size: cover;
+    background-position: center 30%;
+}
+
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+    .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+    }
+}
+
+.nav-link {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #9C6644;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cart-sidebar {
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+
+.site-footer {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 767px) {
+    .app-main {
+        padding-bottom: calc(var(--app-tabbar-h) + var(--safe-bottom) + 0.5rem);
+    }
+}
+
+.design-canvas {
+    touch-action: none;
+    cursor: crosshair;
+    display: block;
+    background: #fff;
+}
+
+.mobile-tabbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-shop-title {
+    line-height: 1.15;
+}
+
+@media (max-width: 639px) {
+    .hero-bg {
+        min-height: 0;
+    }
+
+    .products-grid-mobile {
+        gap: 0.625rem;
+    }
+
+    .product-card-img {
+        max-height: 52vw;
+        object-fit: cover;
+    }
+
+    @supports (max-height: 52dvw) {
+        .product-card-img {
+            max-height: min(52vw, 52dvw);
+        }
+    }
+}
+
+#auction-list {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-tile {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    isolation: isolate;
+}
+
+.cat-tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.65) 100%);
+    border-radius: inherit;
+    z-index: 0;
+}
+
+.cat-tile > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cat-tile-beadwork {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b5/Maasai_beadwork.jpg');
+}
+
+.cat-tile-pottery {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ea/Nok_terracotta_figurine.jpg');
+}
+
+.cat-tile-textile {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fd/Ewe_kente_stripes%2C_Ghana.jpg');
+}
+
+.cat-tile-decor {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Bogolan_cloth_in_market_of_End%C3%A9%2C_Mali.JPG');
+}
+
+.cat-tile-jewelry {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b8/Makonde_mask_BM_Af1958_12_1.jpg');
+}
+
+.cat-tile-basketry {
+    background-image: url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=75');
+}
+
+.cat-tile-sculpture {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/72/Bamileke_Mask_%28tsesah%29.jpg');
+}
+
+.cat-tile-leather {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/African_wooden_mask.jpg');
+}
+
+.cat-tile-instruments {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/02/Djembe%2C_Ghana.jpg');
+}
