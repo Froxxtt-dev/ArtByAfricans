@@ -116,30 +116,24 @@ body {
 }
 
 .mobile-tabbar {
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
     z-index: 9999 !important;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.12);
 }
 
 .app-main {
-    padding-bottom: calc(3.75rem + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(4.2rem + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-/* Prevent overlap when scrolling */
-body {
-    overscroll-behavior-y: none;
-}
-
-@media (max-width: 767px) {
+/* Extra safety for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .mobile-tabbar {
+        padding-bottom: env(safe-area-inset-bottom, 12px) !important;
+    }
     .app-main {
-        padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important;
     }
 }
 
-@media (max-width: 767px) {
-    .app-main {
-        --app-tabbar-h: 3.75rem;
-    }
-}
 .mobile-shop-title {
     line-height: 1.15;
 }
@@ -234,4 +228,20 @@ body {
 
 .cat-tile-instruments {
     background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/02/Djembe%2C_Ghana.jpg');
+}
+
+.mobile-tabbar {
+    z-index: 9999 !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.app-main {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+
+/* Extra safety for iOS devices */
+@supports (-webkit-touch-callout: none) {
+    .app-main {
+        padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
+    }
 }
