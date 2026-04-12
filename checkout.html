@@ -68,7 +68,7 @@
                             <select id="delivery-zone" class="w-full px-4 py-3.5 border border-gray-200 rounded-2xl text-base focus:border-[#9C6644] focus:ring-1 focus:ring-[#9C6644]">
                                 <option value="gh-greater-accra">Ghana — Greater Accra</option>
                                 <option value="gh-other">Ghana — Other regions</option>
-                                <option value="west-africa">West Africa (non-Ghana)</option>
+                                <option value="west-africa">West Africa</option>
                                 <option value="africa-other">Africa — Other</option>
                                 <option value="eu-uk">Europe / United Kingdom</option>
                                 <option value="americas">Americas</option>
@@ -199,14 +199,14 @@
 
     <script>
         const DELIVERY_FEES = {
-            'gh-greater-accra': { amount: 25, label: 'Greater Accra' },
-            'gh-other': { amount: 45, label: 'Other Regions (Ghana)' },
-            'west-africa': { amount: 120, label: 'West Africa' },
-            'africa-other': { amount: 165, label: 'Other Africa' },
-            'eu-uk': { amount: 220, label: 'Europe / UK' },
-            'americas': { amount: 260, label: 'Americas' },
-            'asia-pacific': { amount: 280, label: 'Asia / Pacific' },
-            'other-intl': { amount: 310, label: 'Other International' }
+            'gh-greater-accra': { amount: 50, label: 'Greater Accra' },
+            'gh-other': { amount: 90, label: 'Other Regions (Ghana)' },
+            'west-africa': { amount: 200, label: 'West Africa' },
+            'africa-other': { amount: 250, label: 'Other Africa' },
+            'eu-uk': { amount: 350, label: 'Europe / UK' },
+            'americas': { amount: 450, label: 'Americas' },
+            'asia-pacific': { amount: 500, label: 'Asia / Pacific' },
+            'other-intl': { amount: 600, label: 'Other International' }
         };
 
         let currentTotal = 0;
