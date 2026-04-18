@@ -245,3 +245,7 @@ body {
         padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important;
     }
 }
+
+.site-main {
+    flex: 1 0 auto !important;
+}
