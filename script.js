@@ -15,6 +15,20 @@ const WM = {
     maasaiBeads: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Maasai_beadwork.jpg'
 }
 
+const teamMembers = [
+  { name: "Sarfo Bright 10296662", role: "Project Lead" },
+  { name: "Quarcoo Bright Nii Ayi 10297720", role: "UI/UX Designer" },
+  { name: "Apedu Abdul Salim Ahmed 10297622", role: "Frontend Developer" },
+  { name: "Owusu Alex Achia 10299259", role: "Backend Developer" },
+  { name: "Asiedu Abigail Esi Faa 10300232", role: "Marketing & Content" },
+  { name: "Poku Catherine Opokuaa 10299187", role: "Research & Documentation" },
+  { name: "Boateng Awurakua 10300254", role: "Artisan Relations" },
+  { name: "Sumaila Aisha 10299117", role: "Product Photography" },
+  { name: "Benyah Nelson N. A. Bethel 10300585", role: "Quality Control" },
+  { name: "Okudzeto Benedict 10300254", role: "Logistics & Shipping" },
+  { name: "Darko Sintim Bridget 10113796", role: "Customer Support" }
+];
+
 const genericAvatar = (name) =>
     `https://ui-avatars.com/api/?name=${encodeURIComponent(name || 'A')}&background=9C6644&color=fff&size=128&bold=true`
 
@@ -1215,4 +1229,47 @@ window.onload = function () {
     showSection('home')
     updateCartCount()
     console.log('%cArtByAfricans Ready 🪔', 'color:#9C6644; font-size:14px; font-weight:600')
+    renderTeamCarousel();
 }
+
+function renderTeamCarousel() {
+            const container = document.getElementById('teamTrack');
+            if (!container) return;
+
+            let html = '';
+            teamMembers.forEach(member => {
+                html += `
+                <div class="min-w-full flex flex-col items-center justify-center px-8 py-10 text-center">
+                    <p class="heading-font text-2xl font-semibold text-gray-900">${member.name}</p>
+                    <p class="mt-3 text-base font-medium text-[#9C6644]">${member.role}</p>
+                </div>`;
+            });
+
+            container.innerHTML = html;
+
+            // Dots
+            const dotsContainer = document.getElementById('teamDots');
+            dotsContainer.innerHTML = teamMembers.map((_, i) => 
+                `<span onclick="goToTeamSlide(${i})" class="team-dot inline-block w-3 h-3 mx-1 rounded-full bg-gray-300 cursor-pointer transition-colors"></span>`
+            ).join('');
+
+            // Auto-slide every 4 seconds
+            let current = 0;
+            setInterval(() => {
+                current = (current + 1) % teamMembers.length;
+                container.style.transform = `translateX(-${current * 100}%)`;
+                updateTeamDots(current);
+            }, 4000);
+        }
+
+        function updateTeamDots(index) {
+            document.querySelectorAll('.team-dot').forEach((dot, i) => {
+                dot.style.backgroundColor = i === index ? '#9C6644' : '#d1d5db';
+            });
+        }
+
+        function goToTeamSlide(index) {
+            const container = document.getElementById('teamTrack');
+            container.style.transform = `translateX(-${index * 100}%)`;
+            updateTeamDots(index);
+        }
