@@ -928,23 +928,36 @@ function goCustomerCare() {
 }
 
 function showSection(section) {
-    document.getElementById('home-section')?.classList.add('hidden')
-    document.getElementById('categories-section')?.classList.add('hidden')
-    document.getElementById('shop-section')?.classList.add('hidden')
-    document.getElementById('artisans-section')?.classList.add('hidden')
-    document.getElementById('sell-section')?.classList.add('hidden')
+    // Hide ALL sections first
+    document.getElementById('home-section')?.classList.add('hidden');
+    document.getElementById('categories-section')?.classList.add('hidden');
+    document.getElementById('shop-section')?.classList.add('hidden');
+    document.getElementById('artisans-section')?.classList.add('hidden');
+    document.getElementById('sell-section')?.classList.add('hidden');
 
-    if (section === 'home') document.getElementById('home-section')?.classList.remove('hidden')
-    else if (section === 'shop') document.getElementById('shop-section')?.classList.remove('hidden')
-    else if (section === 'categories') document.getElementById('categories-section')?.classList.remove('hidden')
+    // Show the requested section
+    if (section === 'home') {
+        document.getElementById('home-section')?.classList.remove('hidden');
+    } 
+    else if (section === 'shop') {
+        document.getElementById('shop-section')?.classList.remove('hidden');
+        renderProducts();                    // Important: refresh products
+    } 
+    else if (section === 'categories') {
+        document.getElementById('categories-section')?.classList.remove('hidden');
+    } 
     else if (section === 'artisans') {
-        document.getElementById('artisans-section')?.classList.remove('hidden')
-        closeArtisanProfile()
-        initDesignCanvas()
-        renderAuctionList()
-    } else if (section === 'sell') document.getElementById('sell-section')?.classList.remove('hidden')
+        document.getElementById('artisans-section')?.classList.remove('hidden');
+        closeArtisanProfile();
+        initDesignCanvas();
+        renderAuctionList();
+        renderArtisans();
+    } 
+    else if (section === 'sell') {
+        document.getElementById('sell-section')?.classList.remove('hidden');
+    }
 
-    if (section !== 'artisans') closeArtisanProfile()
+    if (section !== 'artisans') closeArtisanProfile();
 }
 
 function closeArtisanProfile() {
