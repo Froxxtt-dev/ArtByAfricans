@@ -16,6 +16,7 @@
                 <h1 class="heading-font text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-[#9C6644] truncate">ArtByAfricans</h1>
             </div>
 
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium">
                 <button type="button" onclick="showSection('home')" class="nav-link py-1">Home</button>
                 <button type="button" onclick="showSection('shop')" class="nav-link py-1">Shop</button>
@@ -132,7 +133,7 @@
             </article>
 
            <section class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm" aria-labelledby="team-heading">
-<h3 id="team-heading" class="heading-font text-xl sm:text-2xl md:text-3xl mb-2 text-center">Project Team</h3>                <div class="relative overflow-hidden rounded-2xl border border-gray-100">
+                <h3 id="team-heading" class="heading-font text-xl sm:text-2xl md:text-3xl mb-2 text-center">Project Team</h3>                <div class="relative overflow-hidden rounded-2xl border border-gray-100">
                     <div id="teamTrack" class="flex transition-transform duration-700 ease-out" style="transform: translateX(0%);">
                         <!-- Populated by JavaScript -->
                     </div>
@@ -141,8 +142,8 @@
                 <!-- Carousel dots -->
                 <div id="teamDots" class="flex justify-center gap-2 mt-6"></div>
             </section>
+        </section>
 
-<!-- CATEGORIES SECTION - Updated with direct image links -->
         <section id="categories-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
             <h2 class="heading-font text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">Categories</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 flex-1 content-start">
@@ -222,7 +223,6 @@
         </section>
 
         <section id="shop-section" class="section-pane max-w-7xl mx-auto w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10 hidden flex-1 flex flex-col">
-           </div>
             <div class="flex flex-col gap-4 mb-6 sm:mb-8">
                 <h2 class="heading-font mobile-shop-title text-2xl sm:text-3xl md:text-4xl font-bold">Shop African Artworks</h2>
                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
@@ -357,7 +357,7 @@
             </div>
         </section>
 
-<footer class="site-footer mt-auto shrink-0 bg-[#1f1a16] text-gray-400 border-t border-gray-800">
+        <footer class="site-footer mt-auto shrink-0 bg-[#1f1a16] text-gray-400 border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-6 py-8">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
                     
@@ -477,7 +477,7 @@
         </div>
     </div>
 
-<nav class="mobile-tabbar md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-2xl" 
+    <nav class="mobile-tabbar md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-2xl" 
          style="padding-bottom: env(safe-area-inset-bottom, 12px);">
         <div class="grid grid-cols-5 h-14 text-[10px] sm:text-xs font-medium text-gray-700">
             <button type="button" onclick="showSection('home')" class="flex flex-col items-center justify-center gap-0.5 active:bg-gray-100 min-h-[3.5rem] transition-colors">
